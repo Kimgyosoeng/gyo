@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>김교성 | 자기소개 & 포트폴리오</title>
+    <!-- Pretendard 폰트 불러오기 -->
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <style>
+        :root {
+            --navy-deep: #090d16;
+            --navy-dark: #0f172a;
+            --navy-card: #1e293b;
+            --navy-soft: #f8fafc;
+
+            --amber-main: #f59e0b;
+            --amber-light: #fbbf24;
+            --amber-soft: #fffbeb;
+            --amber-glow: rgba(245, 158, 11, 0.35);
+
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-muted: #64748b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+        }
+
+        body {
+            background-color: #f1f5f9;
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* 1단: 고급스러운 다크 히어로 영역 */
+        .hero-section {
+            position: relative;
+            background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy-dark) 60%, #1e1b4b 100%);
+            color: #ffffff;
+            text-align: center;
+            padding: 80px 20px 100px;
+            overflow: hidden;
+            border-bottom: 3px solid var(--amber-main);
+        }
+
+        .hero-section::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(245, 158, 11, 0.12) 0%, transparent 50%);
+            animation: rotateGlow 20s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes rotateGlow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile-icon-wrapper {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .profile-icon {
+            font-size: 70px;
+            background: rgba(30, 41, 59, 0.8);
+            backdrop-filter: blur(8px);
+            width: 130px;
+            height: 130px;
+            line-height: 125px;
+            border-radius: 50%;
+            border: 2px solid var(--amber-main);
+            box-shadow: 0 0 25px var(--amber-glow);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .profile-icon-wrapper:hover .profile-icon {
+            transform: scale(1.08) rotate(5deg);
+        }
+
+        .hero-section h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+            background: linear-gradient(to right, #ffffff, #e2e8f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-section p {
+            font-size: 1.15rem;
+            color: #94a3b8;
+            font-weight: 400;
+            margin-bottom: 25px;
+        }
+
+        .insta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, var(--amber-main) 0%, var(--amber-light) 100%);
+            color: var(--navy-deep);
+            text-decoration: none;
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            box-shadow: 0 6px 20px var(--amber-glow);
+            transition: all 0.3s ease;
+        }
+
+        .insta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(245, 158, 11, 0.5);
+        }
+
+        /* 2단: 본문 영역 */
+        .main-container {
+            max-width: 800px;
+            margin: -45px auto 60px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .card-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+
+        .card {
+            background: #ffffff;
+            padding: 36px;
+            border-radius: 20px;
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            box-shadow: 0 15px 35px -5px rgba(15, 23, 42, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px -5px rgba(15, 23, 42, 0.08);
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            color: var(--navy-dark);
+            margin-bottom: 22px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 14px;
+            font-weight: 800;
+        }
+
+        /* 자기소개 박스 */
+        .about-text {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            line-height: 1.85;
+            word-break: keep-all;
+        }
+
+        .about-text p {
+            margin-bottom: 12px;
+        }
+
+        .about-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight {
+            color: var(--navy-dark);
+            font-weight: 700;
+            background: linear-gradient(120deg, transparent 50%, var(--amber-soft) 50%);
+            padding: 0 4px;
+            border-radius: 4px;
+        }
+
+        /* 1) 핵심 역량 & 키워드 (뱃지) */
+        .tag-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tag-item {
+            background-color: var(--navy-soft);
+            color: var(--navy-dark);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border: 1px solid #e2e8f0;
+            transition: all 0.2s ease;
+        }
+
+        .tag-item:hover {
+            background-color: var(--amber-soft);
+            border-color: var(--amber-main);
+            color: var(--navy-dark);
+        }
+
+        /* 2) 관심 마케팅 영역 (스킬 프로그래스 바) */
+        .skills-list {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 700;
+            margin-bottom: 6px;
+            font-size: 0.95rem;
+            color: var(--navy-dark);
+        }
+
+        .progress-bar-bg {
+            background: #e2e8f0;
+            border-radius: 10px;
+            height: 10px;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            background: linear-gradient(90deg, var(--amber-main), var(--amber-light));
+            height: 100%;
+            border-radius: 10px;
+        }
+
+        /* 3) 좋아하는 것 3가지 영역 */
+        .likes-list {
+            display: flex;
+            justify-content: space-around;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+
+        .like-item {
+            flex: 1;
+            min-width: 140px;
+            background: var(--navy-soft);
+            padding: 24px 16px;
+            border-radius: 16px;
+            text-align: center;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .like-item:hover {
+            transform: translateY(-8px);
+            background-color: #ffffff;
+            border-color: var(--amber-main);
+            box-shadow: 0 12px 25px var(--amber-glow);
+        }
+
+        .like-emoji {
+            font-size: 45px;
+            margin-bottom: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .like-item:hover .like-emoji {
+            transform: scale(1.18);
+        }
+
+        .like-text {
+            font-weight: 700;
+            color: var(--navy-dark);
+            font-size: 1.05rem;
+        }
+
+        /* 4) 타임라인 / 경험 이력 */
+        .timeline {
+            position: relative;
+            padding-left: 20px;
+            border-left: 2px solid #e2e8f0;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 24px;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -27px;
+            top: 6px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--amber-main);
+            border: 2px solid #ffffff;
+            box-shadow: 0 0 8px var(--amber-glow);
+        }
+
+        .timeline-date {
+            font-size: 0.85rem;
+            color: var(--amber-main);
+            font-weight: 700;
+        }
+
+        .timeline-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--navy-dark);
+        }
+
+        .timeline-desc {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+
+        /* 5) 목표 한 줄 영역 */
+        .goal-box {
+            position: relative;
+            background: linear-gradient(135deg, var(--amber-soft) 0%, #fef3c7 100%);
+            border: 1px solid rgba(245, 158, 11, 0.4);
+            padding: 28px;
+            border-radius: 16px;
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--navy-dark);
+            word-break: keep-all;
+            box-shadow: 0 8px 20px rgba(245, 158, 11, 0.12);
+        }
+
+        /* 명함 스타일 카드 */
+        .business-card {
+            background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy-deep) 100%);
+            color: #ffffff;
+            max-width: 400px;
+            margin: 10px auto 0;
+            padding: 32px 28px;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid rgba(245, 158, 11, 0.5);
+            box-shadow: 0 20px 35px rgba(15, 23, 42, 0.25);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .business-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .business-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--amber-main), var(--amber-light));
+        }
+
+        .bc-name {
+            font-size: 1.6rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: #ffffff;
+            margin-bottom: 6px;
+        }
+
+        .bc-divider {
+            width: 36px;
+            height: 3px;
+            background: var(--amber-main);
+            margin: 12px auto;
+            border-radius: 2px;
+        }
+
+        .bc-interest {
+            font-size: 0.98rem;
+            color: #cbd5e1;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* 반응형 모바일 최적화 */
+        @media (max-width: 600px) {
+            .hero-section {
+                padding: 60px 15px 80px;
+            }
+
+            .hero-section h1 {
+                font-size: 2rem;
+            }
+
+            .profile-icon {
+                width: 110px;
+                height: 110px;
+                line-height: 105px;
+                font-size: 55px;
+            }
+
+            .card {
+                padding: 24px 20px;
+            }
+
+            .likes-list {
+                flex-direction: column;
+            }
+
+            .like-item {
+                width: 100%;
+            }
+
+            .business-card {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1단: 다크 네이비 배경 상단 영역 -->
+    <header class="hero-section">
+        <div class="hero-content">
+            <div class="profile-icon-wrapper">
+                <div class="profile-icon">🎓</div>
+            </div>
+            <h1>김교성</h1>
+            <p>경영학과 3학년 | 관심분야: 마케팅</p>
+            
+            <a href="https://www.instagram.com/rla.rytjd/" target="_blank" rel="noopener noreferrer" class="insta-btn">
+                📸 @rla.rytjd
+            </a>
+        </div>
+    </header>
+
+    <!-- 2단: 본문 영역 -->
+    <main class="main-container">
+        <div class="card-grid">
+            
+            <!-- 상세 자기소개 -->
+            <section class="card">
+                <h2 class="card-title"><span>📝</span> 소개합니다</h2>
+                <div class="about-text">
+                    <p>안녕하세요! 트렌디한 마케팅을 꿈꾸는 <span class="highlight">경영학과 3학년 김교성</span>입니다.</p>
+                    <p>좋아하는 브랜드나 취향을 직접 다듬고 완성해가는 디테일에 즐거움을 느끼며, 확실한 주관과 명확한 방향성을 가지고 생각을 실행으로 옮기는 것을 좋아합니다.</p>
+                    <p>야구, 게임, 음악처럼 명확한 팬덤과 스토리가 있는 유기적인 콘텐츠 문화에 깊은 흥미를 느끼고 있으며, 다양한 매체를 유기적으로 연결해 사람들에게 일상 속 소소한 기쁨을 전하고자 합니다.</p>
+                </div>
+            </section>
+
+            <!-- 신규 요소 1: 핵심 키워드 & 역량 태그 -->
+            <section class="card">
+                <h2 class="card-title"><span>🏷️</span> 핵심 키워드</h2>
+                <div class="tag-container">
+                    <span class="tag-item">#콘텐츠마케팅</span>
+                    <span class="tag-item">#트렌드분석</span>
+                    <span class="tag-item">#팬덤비즈니스</span>
+                    <span class="tag-item">#브랜드스토리텔링</span>
+                    <span class="tag-item">#디테일추구</span>
+                    <span class="tag-item">#기획및실행</span>
+                </div>
+            </section>
+
+            <!-- 신규 요소 2: 관심 마케팅 지표 / 스킬 게이지 -->
+            <section class="card">
+                <h2 class="card-title"><span>📊</span> 마케팅 관심 영역</h2>
+                <div class="skills-list">
+                    <div>
+                        <div class="skill-info">
+                            <span>콘텐츠 & 디지털 마케팅</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" style="width: 90%;"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="skill-info">
+                            <span>브랜드 마케팅 & 스토링텔링</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" style="width: 85%;"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="skill-info">
+                            <span>트렌드 분석 & 소비 심리</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" style="width: 80%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 좋아하는 것 3가지 -->
+            <section class="card">
+                <h2 class="card-title"><span>✨</span> 좋아하는 것</h2>
+                <div class="likes-list">
+                    <a href="https://www.instagram.com/hanwhaeagles_soori/" target="_blank" rel="noopener noreferrer" class="like-item">
+                        <div class="like-emoji">⚾</div>
+                        <div class="like-text">야구</div>
+                    </a>
+                    <a href="https://www.instagram.com/leagueoflegendskorea/" target="_blank" rel="noopener noreferrer" class="like-item">
+                        <div class="like-emoji">🎮</div>
+                        <div class="like-text">게임</div>
+                    </a>
+                    <a href="https://www.music-flo.com/" target="_blank" rel="noopener noreferrer" class="like-item">
+                        <div class="like-emoji">🎵</div>
+                        <div class="like-text">노래</div>
+                    </a>
+                </div>
+            </section>
+
+            <!-- 신규 요소 3: 히스토리 / 히스토리 타임라인 -->
+            <section class="card">
+                <h2 class="card-title"><span>🚩</span> 히스토리</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">현재</div>
+                        <div class="timeline-title">경영학과 3학년 재학 중</div>
+                        <div class="timeline-desc">마케팅 및 브랜드 전략 집중 탐구</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">관심 활동</div>
+                        <div class="timeline-title">스포츠 & e스포츠 팬덤 라이프</div>
+                        <div class="timeline-desc">야구(한화이글스), 게임(LoL) 콘텐츠 현장 감상 및 분석</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">취미</div>
+                        <div class="timeline-title">음악 감상 & 플레이리스트 탐색</div>
+                        <div class="timeline-desc">FLO 플랫폼을 활용한 트렌디한 음악 탐색 및 라이프스타일 채우기</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 목표 한 줄 -->
+            <section class="card">
+                <h2 class="card-title"><span>🎯</span> 나의 목표</h2>
+                <div class="goal-box">
+                    " 행복한 삶 살기 "
+                </div>
+            </section>
+
+            <!-- 하단 고급 명함 카드 -->
+            <section class="business-card">
+                <div class="bc-name">김 교 성</div>
+                <div class="bc-divider"></div>
+                <div class="bc-interest">관심분야 | 마케팅 (Marketing)</div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer>
+        <p>© Kim Gyoseong. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
